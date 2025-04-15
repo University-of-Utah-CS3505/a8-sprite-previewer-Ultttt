@@ -3,6 +3,10 @@
 #Dingyu Shi
 #u1496474
 
+# Me(Zhu Zhu) and Dingyu Shi were working together in the library.
+# Since Dingyu Shi's laptop was broken, She used library's computer and we created a shared google doc and worked togther.
+# Therefore there is only me committed and pushed all the updates for gitub.
+
 import math
 from PyQt6.QtGui import *
 from PyQt6.QtWidgets import *
