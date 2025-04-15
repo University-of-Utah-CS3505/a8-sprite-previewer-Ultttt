@@ -2,8 +2,6 @@
 #u1537009
 #Dingyu Shi
 #u1496474
-import math
-
 
 import math
 from PyQt6.QtGui import *
@@ -15,14 +13,13 @@ from PyQt6.QtCore import *
 def load_sprite(sprite_folder_name, number_of_frames):
    frames = []
    padding = math.ceil(math.log(number_of_frames - 1, 10))
+
    for frame in range(number_of_frames):
        folder_and_file_name = sprite_folder_name + "/sprite_" + str(frame).rjust(padding, '0') + ".png"
        frames.append(QPixmap(folder_and_file_name))
-
    return frames
 
 class SpritePreview(QMainWindow):
-
    def __init__(self):
        super().__init__()
        self.setWindowTitle("Sprite Preview")
@@ -43,13 +40,14 @@ class SpritePreview(QMainWindow):
        self.start_button.clicked.connect(self.toggle_animation)
        self.timer.timeout.connect(self.update_frame)
 
+       self.update_fps_display()
+
+
    def update_fps_display(self):
        fps = self.slider.value()
        self.fps_value_label.setText(str(fps))
-
-       if self.is_running:
-           delay = int(1000 / fps)
-           self.timer.setInterval(delay)
+       delay = int(1000 / fps)
+       self.timer.setInterval(delay)
 
    def toggle_animation(self):
        if not self.is_running:
