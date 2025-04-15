@@ -46,6 +46,28 @@ class SpritePreview(QMainWindow):
 
         self.update_fps_display()
 
+        self.menu()
+
+    def menu(self):
+        menu_bar = self.menuBar()
+        file_menu = menu_bar.addMenu("File")
+
+        pause_action = QAction("Pause",self)
+        pause_action.triggered.connect(self.pause_animation)
+        file_menu.addAction(pause_action)
+
+        exit_action = QAction("Exit", self)
+        exit_action.triggered.connect(self.close)
+        file_menu.addAction(exit_action)
+
+
+    def pause_animation(self):
+        if self.is_running:
+            self.timer.stop()
+            self.start_button.setText("Start")
+            self.is_running = False
+
+
     def update_fps_display(self):
         fps = self.slider.value()
         self.fps_value_label.setText(str(fps))
